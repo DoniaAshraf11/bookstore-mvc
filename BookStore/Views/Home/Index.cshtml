@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1 class="text-center my-4">📚 Book Store Dashboard</h1>
+
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="card bg-light border-success mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">📖 Books</h5>
+                <p class="card-text display-4">@ViewBag.BookCount</p>
+                <a class="btn btn-outline-success" href="/Books">View Books</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-light border-primary mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">✍️ Authors</h5>
+                <p class="card-text display-4">@ViewBag.AuthorCount</p>
+                <a class="btn btn-outline-primary" href="/Authors">View Authors</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card bg-light border-warning mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">👤 Readers</h5>
+                <p class="card-text display-4">@ViewBag.ReaderCount</p>
+                <a class="btn btn-outline-warning" href="/Readers">View Readers</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BookStoreMVC.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1 class="text-center my-4">📚 All Books</h1>
+
+<p>
+    <a class="btn btn-success mb-3" asp-action="Create">➕ Add New Book</a>
+</p>
+
+<table class="table table-hover shadow-sm border rounded">
+    <thead class="table-light">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.PublishDate)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.PublishDate.ToShortDateString()</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@item.Author?.Name</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-info" asp-action="Edit" asp-route-id="@item.Id">✏️ Edit</a>
+                    <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">📋 Details</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">🗑️ Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

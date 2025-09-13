@@ -1,0 +1,41 @@
+﻿@model BookStoreMVC.Models.Reader
+
+@{
+    ViewData["Title"] = "Reader Details";
+}
+
+<h1 class="text-center my-4">👁️ Reader Details</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-info shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title text-info fw-bold mb-3">👤 @Model.Name</h4>
+
+                <p><strong>📧 Email:</strong> @Model.Email</p>
+                <p><strong>📞 Phone:</strong> @Model.PhoneNumber</p>
+
+                <hr />
+                <h5 class="fw-bold">📚 Borrowed Books</h5>
+                @if (Model.Books != null && Model.Books.Any())
+                {
+                    <ul class="list-group list-group-flush mb-3">
+                        @foreach (var book in Model.Books)
+                        {
+                            <li class="list-group-item">@book.Title</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">This reader has no books.</p>
+                }
+
+                <div class="mt-3">
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-info me-2">✏️ Edit</a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">🔙 Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

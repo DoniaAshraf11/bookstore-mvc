@@ -1,0 +1,37 @@
+﻿@model BookStoreMVC.Models.Author
+
+@{
+    ViewData["Title"] = "Edit Author";
+}
+
+<h1 class="text-center my-4">✏️ Edit Author</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-warning">
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Nationality" class="form-label"></label>
+                        <input asp-for="Nationality" class="form-control" />
+                        <span asp-validation-for="Nationality" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">🔙 Back</a>
+                        <button type="submit" class="btn btn-warning text-white">💾 Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</

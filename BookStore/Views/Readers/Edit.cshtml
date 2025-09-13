@@ -1,0 +1,67 @@
+﻿@model BookStoreMVC.Models.Reader
+
+@{
+    ViewData["Title"] = "Edit Reader";
+}
+
+<h1 class="text-center my-4">✏️ Edit Reader</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-warning">
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Name" class="form-label fw-bold">👤 Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter reader's name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Email" class="form-label fw-bold">📧 Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="example@mail.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="PhoneNumber" class="form-label fw-bold">📞 Phone</label>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="0123456789" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <h5 class="mt-4 mb-2 fw-bold">📚 Current Borrowed Books</h5>
+                    @if (Model.Books != null && Model.Books.Any())
+                    {
+                        <ul class="list-group list-group-flush">
+                            @foreach (var book in Model.Books)
+                            {
+                                <li class="list-group-item">@book.Title</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted">This reader has no books assigned.</p>
+                    }
+
+                    <div class="text-center mt-4">
+                        <input type="submit" value="💾 Save Changes" class="btn btn-warning w-50" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a asp-action="Index" class="btn btn-outline-secondary">🔙 Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

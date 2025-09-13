@@ -1,0 +1,38 @@
+﻿@model BookStoreMVC.Models.Reader
+
+@{
+    ViewData["Title"] = "Delete Reader";
+}
+
+<h1 class="text-center my-4 text-danger">🗑️ Delete Reader</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-danger shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title text-danger fw-bold mb-3">Are you sure?</h4>
+                <p class="text-muted">You're about to delete the following reader:</p>
+
+                <dl class="row">
+                    <dt class="col-sm-4">👤 Name</dt>
+                    <dd class="col-sm-8">@Model.Name</dd>
+
+                    <dt class="col-sm-4">📧 Email</dt>
+                    <dd class="col-sm-8">@Model.Email</dd>
+
+                    <dt class="col-sm-4">📞 Phone</dt>
+                    <dd class="col-sm-8">@Model.PhoneNumber</dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="mt-4 d-flex justify-content-between">
+                        <button type="submit" class="btn btn-danger">✅ Confirm Delete</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">❌ Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

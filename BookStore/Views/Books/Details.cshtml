@@ -1,0 +1,34 @@
+﻿@model BookStoreMVC.Models.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h1 class="text-center my-4">📘 Book Details</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-info shadow-sm">
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">📖 Title</dt>
+                    <dd class="col-sm-8">@Model.Title</dd>
+
+                    <dt class="col-sm-4">📅 Publish Date</dt>
+                    <dd class="col-sm-8">@Model.PublishDate.ToShortDateString()</dd>
+
+                    <dt class="col-sm-4">💰 Price</dt>
+                    <dd class="col-sm-8">@Model.Price.ToString("C")</dd>
+
+                    <dt class="col-sm-4">✍️ Author</dt>
+                    <dd class="col-sm-8">@Model.Author?.Name</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="text-end mt-3">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning me-2">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

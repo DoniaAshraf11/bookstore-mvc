@@ -1,0 +1,28 @@
+﻿@model BookStoreMVC.Models.Author
+
+@{
+    ViewData["Title"] = "Author Details";
+}
+
+<h1 class="text-center my-4">📋 Author Details</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-info">
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">🧑 Name</dt>
+                    <dd class="col-sm-8">@Model.Name</dd>
+
+                    <dt class="col-sm-4">🌍 Nationality</dt>
+                    <dd class="col-sm-8">@Model.Nationality</dd>
+                </dl>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-info text-white">✏️ Edit</a>
+                    <a asp-action="Index" class="btn btn-secondary">🔙 Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

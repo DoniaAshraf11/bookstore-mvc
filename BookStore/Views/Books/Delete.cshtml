@@ -1,0 +1,39 @@
+﻿@model BookStoreMVC.Models.Book
+
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<h1 class="text-center my-4 text-danger">🗑️ Delete Book</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="alert alert-warning shadow-sm">
+            <strong>⚠️ Are you sure you want to delete this book?</strong>
+        </div>
+
+        <div class="card border-danger shadow-sm">
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">📖 Title</dt>
+                    <dd class="col-sm-8">@Model.Title</dd>
+
+                    <dt class="col-sm-4">📅 Publish Date</dt>
+                    <dd class="col-sm-8">@Model.PublishDate.ToShortDateString()</dd>
+
+                    <dt class="col-sm-4">💰 Price</dt>
+                    <dd class="col-sm-8">@Model.Price.ToString("C")</dd>
+
+                    <dt class="col-sm-4">✍️ Author</dt>
+                    <dd class="col-sm-8">@Model.Author?.Name</dd>
+                </dl>
+            </div>
+        </div>
+
+        <form asp-action="Delete" class="mt-3">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger me-2">Yes, Delete</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

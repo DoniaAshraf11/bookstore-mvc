@@ -1,0 +1,62 @@
+﻿@model BookStoreMVC.Models.Reader
+
+@{
+    ViewData["Title"] = "Create Reader";
+}
+
+<h1 class="text-center my-4">📚 Add a New Reader</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-info">
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Name" class="form-label fw-bold">👤 Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter reader's name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Email" class="form-label fw-bold">📧 Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="example@mail.com" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="PhoneNumber" class="form-label fw-bold">📞 Phone</label>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="0123456789" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="selectedBookId" class="form-label fw-bold">📖 Choose a Book</label>
+                        <select class="form-control" name="SelectedBookIds" multiple>
+                            @foreach (var book in ViewBag.AvailableBooks)
+                            {
+                                <option value="@book.Value">@book.Text</option>
+                            }
+                        </select>
+
+                    </div>
+
+                    <div class="text-center">
+                        <input type="submit" value="➕ Create Reader" class="btn btn-success w-50" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a asp-action="Index" class="btn btn-outline-secondary">🔙 Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
